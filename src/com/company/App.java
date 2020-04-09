@@ -114,7 +114,6 @@ public class App {
             }
         } catch (Exception e) {
             System.out.println("Unexpected error occurred while processing your request!");
-            e.printStackTrace();
         }
     }
 
