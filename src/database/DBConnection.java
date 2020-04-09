@@ -53,6 +53,45 @@ public class DBConnection
         return established;
     }
 
+    public ResultSet getQuery(String q)
+    {
+        if(!established)
+        {
+            System.out.println("ERROR! Connection not established!");
+            return null;
+        }
+
+        try
+        {
+            return statement.executeQuery(q);
+        }
+        catch(SQLException e)
+        {
+            System.out.println("ERROR! Error occurred while executing a get query! \n Code:" + e.getErrorCode() + " State:" + e.getSQLState());
+            return null;
+        }
+    }
+
+    public boolean insertQuery(String q)
+    {
+        if(!established)
+        {
+            System.out.println("ERROR! Connection not established!");
+            return false;
+        }
+
+        try
+        {
+            statement.executeUpdate(q);
+            return true;
+        }
+        catch(SQLException e)
+        {
+            System.out.println("ERROR! Error occurred while executing an update query! \n Code:" + e.getErrorCode() + " State:" + e.getSQLState());
+            return false;
+        }
+    }
+
 
 
 }
